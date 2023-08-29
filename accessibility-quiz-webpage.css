@@ -1,0 +1,7 @@
+/* SVG image scaling rule - minimum width of 100px, and as the viewport grows, the image will grow accordingly to be 18 percent of the viewport width. */
+#logo {
+  width: max(100px, 18vw);
+  background-color: #0a0a23;
+  aspect-ratio: 35/4;
+  padding: 0.4rem;
+}

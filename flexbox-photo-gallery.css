@@ -1,0 +1,49 @@
+/* Globally, set the border-box behavior for all elements on the page. override the default content-box model */
+* {
+  box-sizing: border-box;
+}
+
+/* body style settings */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f5f6f7;
+}
+
+/* header style settings */
+.header {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 32px;
+  background: #0a0a23;
+  color: #fff;
+  border-bottom: 4px solid #fdb347;
+}
+
+/* make the gallery container to be flex */
+.gallery {
+  display: flex;
+  flex-direction: row /* row-reverse */ /* column */ /* column-reverse */; /* main axis */
+  flex-wrap: wrap /* nowrap */;
+  justify-content: center; /* how to postion and space flex items inside the flex container */
+  align-items: center; /* how to align items along the cross axis (agains the defined the main axis */
+  padding: 20px 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 16px; /* row / column gap between the items within the flex container */
+}
+
+/* limit the size of images in gallery */
+.gallery img {
+  width: 100%;
+  max-width: 350px;
+  height: 300px;
+  object-fit: cover; /* fill the image container, maintaining aspect ratio, cropping the image, preventing the distortion of images with different aspect ratios. */
+  border-radius: 10px; /* smooth image corders */
+}
+
+/* add an empty element after the last image. If you give it the same width as the images it will push the last image to the left when the gallery is in a two-column layout. Right now, it is in the center because you set justify-content: center on the flex container. */
+.gallery::after {
+  content: "";
+  width: 350px;
+}

@@ -1,0 +1,250 @@
+span[class~="sr-only"] {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0;
+  margin: -1px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #0a0a23;
+}
+
+h1 {
+  max-width: 37.25rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+}
+
+h1 .flex {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1rem;
+}
+
+h1 .flex span:first-of-type {
+  font-size: 0.7em;
+}
+
+h1 .flex span:last-of-type {
+  font-size: 1.2em;
+}
+
+section {
+  max-width: 40rem;
+  margin: 0 auto;
+  border: 2px solid #d0d0d5;
+}
+
+#years {
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  top: 0;
+  background: #0a0a23;
+  color: #fff;
+  margin: 0 -2px;
+  padding: 0.5rem calc(1.25rem + 2px) 0.5rem 0;
+  z-index: 999; /*Adding position sticky moved the element into its own stack. To ensure your #years element does not get hidden by different stacks, add a z-index property set to 999 in the #years rule.*/
+}
+
+/* Style the text within your #years element by creating a #years span[class] selector. The span[class] syntax will target any span element that has a class attribute set, regardless of the attribute's value.
+
+Give your new selector a bold font, a width of 4.5rem, and text aligned to the right. */
+#years span[class] {
+  font-weight: bold;
+  width: 4.5rem;
+  text-align: right;
+}
+
+/*
+Step 45
+You wrapped your tables in a container with the table-wrap class. Create a selector for that class, and give it a padding set to 0 0.75rem 1.5rem 0.75rem.
+*/
+.table-wrap {
+  padding: 0 0.75rem 1.5rem 0.75rem;
+}
+
+/*
+Step 46
+Before you start diving in to the table itself, your span elements are currently bolded. Create a span:not(.sr-only) selector and give it a font-weight property set to normal.
+
+The :not() pseudo-selector is used to target all elements that do not match the selector - in this case, any of your span elements that do not have the sr-only class. This ensures that your earlier rules for the span[class~="sr-only"] selector are not overwritten.
+*/
+/*
+Step 48
+Now that you have added the !important keyword, you can remove the :not(.sr-only) from your span selector.
+*/
+/*
+Step 64
+Your span elements now all have more specific styling, which means you can remove your span rule.*/
+/* span {
+  font-weight: normal;
+}
+*/
+
+/*Step 50
+Ensure your table fills its container with a width property set to 100%, then position it relatively and give it a top margin of 3rem.*/
+/*Step 52
+Now give the captions an absolute position, and shift them -2.25rem from the top and 0.5rem from the left.*/
+table {
+  border-collapse: collapse;
+  border: 0;
+  width: 100%;
+  position: relative;
+  margin-top: 3rem;
+}
+
+/*Step 51
+Next you need to style your caption elements to look more like headers. Create a table caption selector. Set the text to have a color of #356eaf, a size of 1.3em, and a normal weight.*/
+table caption {
+  color: #356eaf;
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+/*Step 49
+Create a table selector to target your tables. Set the border-collapse property to collapse, which will allow cell borders to collapse into a single border, instead of a border around each cell. Also set the border property to 0 to hide the borders themselves.*/
+table caption {
+  color: #356eaf;
+  font-size: 1.3em;
+  font-weight: normal;
+  position: absolute;
+  top: -2.25rem;
+  left: 0.5rem;
+}
+
+/*
+Step 53
+Create a selector to target your td elements within your table body. Give them a width to fill the viewport, with a minimum and maximum of 4rem. This approach ensures that the width is fixed, whereas setting width specifically would allow the elements to shrink to the container.*/
+tbody td {
+  width: 100vw;
+  min-width: 4rem;
+  max-width: 4rem;
+}
+
+/*
+Step 54
+Now target the th elements within your table body, and give them a width of the entire container, less 12rem.*/
+tbody th {
+  width: calc(100% - 12rem);
+}
+
+/*
+Step 55
+The [attribute="value"] selector targets any element that has an attribute with a specific value. Create a tr[class="total"] selector to target specifically your tr elements with the total class. Give it a bottom border of 4px double #0a0a23 and make the font bold.*/
+tr[class="total"] {
+  border-bottom: 4px double #0a0a23;
+  font-weight: bold;
+}
+
+/*
+Step 56
+Using the same selector syntax, target the th elements within your table rows where the class is total. Align the text to the left, and give them a padding of 0.5rem 0 0.25rem 0.5rem.*/
+tr[class="total"] th {
+  text-align: left;
+  padding: 0.5rem 0 0.25rem 0.5rem;
+}
+
+/*
+Step 57
+The key difference between tr[class="total"] and tr.total is that the first will select tr elements where the only class is total. The second will select tr elements where the class includes total.
+In your case, tr.total will work. You can use this selector to target all td elements within your .total rows. Align the text to the right, and give them a padding of 0 0.25rem.*/
+tr.total td {
+  text-align: right;
+  padding: 0 0.25rem;
+}
+
+/*
+Step 58
+The :nth-of-type() pseudo-selector is used to target specific elements based on their order among siblings of the same type. Use this pseudo-selector to target the third td element within your total table rows. Give it a right padding of 0.5rem.*/
+tr.total td:nth-of-type(3) {
+  padding-right: 0.5rem;
+}
+
+/*
+Step 59
+Give your tr.total elements a hover effect that changes the background to #99c9ff.*/
+tr.total:hover {
+  background: #99c9ff;
+}
+
+/*
+Step 60
+Select your td elements with the class value of current, and make the font italic.*/
+td[class="current"] {
+  font-style: italic;
+}
+
+/*
+Step 61
+Select the tr elements with the class set to data. Give them a background image of linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem).*/
+tr[class="data"] {
+  background-image: linear-gradient(
+    to bottom,
+    #dfdfe2 1.845rem,
+    white 1.845rem
+  );
+}
+
+/*
+Step 62
+Select the th elements within your tr.data elements. Align the text to the left, and give them a top padding of 0.3rem and a left padding of 0.5rem.*/
+tr.data th {
+  text-align: left;
+  padding-top: 0.3rem;
+  padding-left: 0.5rem;
+}
+
+/*
+Step 63
+Create a tr.data th .description selector to target the elements with the class set to description that are within your th elements in your .data table rows. Give them a block display, make the text italic with a normal weight, and position them with a padding set to 1rem 0 0.75rem and a right margin of -13.5rem.*/
+tr.data th .description {
+  display: block;
+  font-style: italic;
+  font-weight: normal;
+  padding: 1rem 0 0.75rem;
+  margin-right: -13.5rem;
+}
+
+/*Step 65
+Your dollar amounts are currently misaligned. Create a selector to target the td elements within your tr.data elements. Vertically align the text to the top, horizontally align the text to the right, and set the padding to 0.3rem 0.25rem 0.*/
+tr.data td {
+  text-align: right;
+  vertical-align: top;
+  padding: 0.3rem 0.25rem 0;
+}
+
+/*Step 66
+Create another selector for the td elements within your tr.data element, but specifically select the last one. Give this a right padding of 0.5rem.*/
+tr.data td:last-of-type {
+  padding-right: 0.5rem;
+}
+
+/*
+Step 47
+Rather than having to constantly double-check you are not overwriting your earlier properties, you can use the !important keyword to ensure these properties are always applied, regardless of order or specificity.
+Give each property in your span[class~="sr-only"] selector an !important keyword. Do not change any of the values.
+*/
+span[class~="sr-only"] {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  width: 1px !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  padding: 0 !important;
+  margin: -1px !important;
+}

@@ -1,0 +1,130 @@
+# login to Postgre database using the db t
+erminal
+psql --username=freecodecamp --dbname=postgres
+
+# list up the databases
+\l
+
+# create databases and list to see them
+CREATE DATABASE first_database;
+CREATE DATABASE second_database;
+\l
+
+# connect to a database
+\c second_database
+
+# display tables
+\d 
+
+# create tables and display the table list
+CREATE TABLE first_table();
+CREATE TABLE second_table();
+\d 
+
+# display details of a table
+\d second_table
+
+# add columns to table and display the details
+ALTER TABLE second_table ADD COLUMN first_column INT;
+ALTER TABLE second_table ADD COLUMN id INT;
+ALTER TABLE second_table ADD COLUMN age INT;
+\d second_table
+
+# drop columns and disply the details
+ALTER TABLE second_table DROP COLUMN age;
+ALTER TALBE second_table DROP COLUMN first_column;
+\d second_table
+ALTER TABLE second_table ADD COLUMN name VARCHAR(30);
+\d second_table
+
+# rename columns
+ALTER TABLE second_table RENAME name TO username;
+\d 
+
+# insert a row 
+INSERT INTO second_table(id, username) VALUES(1, 'Samus');
+INSERT INTO second_table(id, username) VALUES(2, 'Mario');
+INSERT INTO second_table(id, username) VALUES(3, 'Luigi');
+\d 
+
+# select rows from table
+SELECT * FROM second_table;
+
+# delete a column
+DELETE FROM second_table WERE username = 'Luigi';
+DELETE FROM second_table WERE username = 'Mario';
+DELETE FROM second_table WERE username = 'Samus';
+SELECT * FROM second_table;
+\d second_table 
+
+# drop columns 
+ALTER TABLE second_table DROP COLUMN username;
+ALTER TABLE second_table DROP COLUMN id;
+\d second_table
+
+# drop tables
+DROP TABLE second_table;
+DROP TABLE first_table;
+
+# rename DATABASE and connect
+ALTER DATABASE first_database RENAME TO mario_database;
+\l
+\c mario_database
+
+# drop database
+DROP DATABASE second_database;
+\l 
+
+# start working on mario_database
+CREATE TABLE characters();
+ALTER TABLE characters ADD COLUMN character_id SERIAL;
+ALTER TABLE characters ADD COLUMN name VARCHAR(30) NOT NULL;
+ALTER TABLE characters ADD COLUMN homeland VARCHAR(60);
+ALTER TABLE characters ADD COLUMN favorite_color VARCHAR(30);
+\d 
+INSERT INTO characters(name, homeland, favorite_color) VALUES('Mario', 'Mushroom Kingdom', 'Red');
+INSERT INTO characters(name, homeland, favorite_color) VALUES('Luigi', 'Mushroom Kingdom', 'Green');
+INSERT INTO characters(name, homeland, favorite_color) VALUES('Peach', 'Mushroom Kingdom', 'Pink');
+INSERT INTO characters(name, homeland, favorite_color) 
+VALUES('Toadstool', 'Mushroom Kingdom', 'Red'),
+VALUES('Bowser', 'Mushroom Kingdom', 'Green');
+INSERT INTO characters(name, homeland, favorite_color) 
+VALUES('Daisy', 'Sarasaland', 'Yellow'),
+VALUES('Yoshi', 'Dinosaur Land', 'Green');
+SELECT * FROM characters;
+UPDATE characters SET favorite_color='Orange'WERE name = 'Daisy';
+SELECT * FROM characters;
+UPDATE characters SET name = 'Toad' WHERE favorite_color='Red';
+UPDATE characters SET name = 'Mario' WHERE character_id = 1;
+UPDATE characters SET favorite_color='Blue'WERE name = 'Toad';
+UPDATE characters SET favorite_color = 'Yellow' WHERE character_id = 5;
+UPDATE characters SET homeland='Blue'WERE name = 'Bowser';
+SELECT * FROM characters ORDER BY character_id;
+ALTER TABLE characters ADD PRIMARY KEY(name);
+\d characters
+ALTER TABLE characters DROP CONSTRAINT characters_pkey;
+ALTER TABLE characters ADD PRIMARY KEY(character_id);
+\d characters
+CREATE TABLE more_info();
+ALTER TABLE more_info ADD COLUMN more_info_id SERIAL;
+ALTER TABLE more_info ADD PRIMARY KEY(more_info_id);
+\d 
+ALTER TABLE more_info ADD COLUMN birthday DATE;
+ALTER TABLE more_info ADD COLUMN birthday INT;
+ALTER TABLE more_info ADD COLUMN weight NUMERIC(4, 1);
+\d more_info
+ALTER TABLE more_info ADD COLUMN INT REFERENCES characters(character_id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,236 @@
+/* use border-box model globally, to include padding and border in width and height */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #c9d2fc;
+}
+
+.cat-head {
+  width: 205px;
+  height: 180px;
+  border: 1px solid #000;
+  border-radius: 46%;
+  background: linear-gradient(#5e5e5e 85%, #45454f 100%);
+  /* position: static; */ /* you won't be able to move it around with top, right, left, or bottom. */
+  /* position: relative; */ /* It works with top left right bottom relatively, working wit the flow of document */
+  position: absolute; /* absolutely positioned by top and left val. */
+  /* position: fixed; */ /* fixed to top-left regardless of page scroll */
+  /* position: sticky; */ /* hybrid of relative + fixed */
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  margin: auto;
+}
+
+/* triangle-like ears, positioning, smoothing the edges, transforming */
+.cat-left-ear {
+  position: absolute;
+  top: -26px;
+  left: -31px;
+  z-index: 1; /* place over the head, so it does not show overlap border  */
+  border-top-left-radius: 90px;
+  border-top-right-radius: 10px;
+  transform: rotate(-45deg);
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 70px solid #5e5e5e;
+}
+
+.cat-right-ear {
+  position: absolute;
+  top: -26px;
+  left: 163px;
+  z-index: 1; /* place over the head, so it does not show overlap border  */
+  border-top-left-radius: 90px;
+  border-top-right-radius: 10px;
+  transform: rotate(45deg);
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 70px solid #5e5e5e;
+}
+
+/* inner ears with different color */
+.cat-left-inner-ear {
+  position: absolute;
+  top: 22px;
+  left: -20px;
+  /* remove all pointed edges */
+  border-bottom-right-radius: 40%;
+  border-bottom-left-radius: 40%;
+  border-top-left-radius: 90px;
+  border-top-right-radius: 10px;
+  /* */
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #3b3b4f;
+}
+
+.cat-right-inner-ear {
+  position: absolute;
+  top: 22px;
+  left: -20px;
+  /* remove all pointed edges */
+  border-bottom-right-radius: 40%;
+  border-bottom-left-radius: 40%;
+  border-top-left-radius: 90px;
+  border-top-right-radius: 10px;
+  /* */
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #3b3b4f;
+}
+
+/* cat eyes */
+.cat-left-eye {
+  position: absolute;
+  top: 54px;
+  left: 39px;
+  border-radius: 60%;
+  transform: rotate(25deg);
+  width: 30px;
+  height: 40px;
+  background-color: #000;
+}
+
+.cat-right-eye {
+  position: absolute;
+  top: 54px;
+  left: 134px;
+  border-radius: 60%;
+  transform: rotate(-25deg);
+  width: 30px;
+  height: 40px;
+  background-color: #000;
+}
+
+/* cat inner eyes */
+
+.cat-left-inner-eye {
+  position: absolute;
+  top: 8px;
+  left: 2px;
+  border-radius: 60%;
+  transform: rotate(10deg);
+  width: 10px;
+  height: 20px;
+  background-color: #fff;
+}
+
+.cat-right-inner-eye {
+  position: absolute;
+  top: 8px;
+  left: 18px;
+  border-radius: 60%;
+  transform: rotate(-5deg);
+  width: 10px;
+  height: 20px;
+  background-color: #fff;
+}
+
+/* cat nose */
+.cat-nose {
+  position: absolute;
+  top: 108px;
+  left: 85px;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  transform: rotate(180deg);
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #442c2c;
+}
+
+/* cat mouth and mouth lines */
+.cat-mouth div {
+  width: 30px;
+  height: 50px;
+  border: 2px solid #000;
+  /* make the two mouth lines into an elliptical shape. */
+  border-color: black transparent transparent transparent;
+  border-radius: 190%/190px 150px 0 0;
+}
+
+.cat-mouth-line-left {
+  position: absolute;
+  top: 88px;
+  left: 74px;
+  transform: rotate(170deg);
+}
+
+.cat-mouth-line-right {
+  position: absolute;
+  top: 88px;
+  left: 91px;
+  transform: rotate(165deg);
+}
+
+/* whiskers - 3 on each side */
+.cat-whiskers-left div {
+  width: 40px;
+  height: 1px;
+  background-color: #000;
+}
+
+.cat-whiskers-right div {
+  width: 40px;
+  height: 1px;
+  background-color: #000;
+}
+
+.cat-whisker-left-top {
+  position: absolute;
+  top: 120px;
+  left: 52px;
+  transform: rotate(10deg);
+}
+
+.cat-whisker-left-middle {
+  position: absolute;
+  top: 127px;
+  left: 52px;
+  transform: rotate(3deg);
+}
+
+.cat-whisker-left-bottom {
+  position: absolute;
+  top: 134px;
+  left: 52px;
+  transform: rotate(-3deg);
+}
+
+.cat-whisker-right-top {
+  position: absolute;
+  top: 120px;
+  left: 109px;
+  transform: rotate(-10deg);
+}
+
+.cat-whisker-right-middle {
+  position: absolute;
+  top: 127px;
+  left: 109px;
+  transform: rotate(-3deg);
+}
+
+.cat-whisker-right-bottom {
+  position: absolute;
+  top: 134px;
+  left: 109px;
+  transform: rotate(3deg);
+}
+
+/* some black box for demo only - absolute position */
+/*
+.box {
+  width: 200px;
+  height: 600px;
+  background-color: #000;
+  position: absolute;
+  top: 800px;
+  left: 650px;
+}
+*/

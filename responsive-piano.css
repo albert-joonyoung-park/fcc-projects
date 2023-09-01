@@ -1,0 +1,154 @@
+/* override default content-box model */
+html {
+  box-sizing: border-box;
+}
+
+/* Practically all elements and non-elements to use the same box-sizing model as html set above */
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+/* piano element sthyling */
+#piano {
+  color: white;
+  background-color: #00471b;
+  width: 992px;
+  height: 290px;
+  margin: 80px auto;
+  padding: 90px 20px 0 20px; /* position properly onto keys element */
+  position: relative;
+  border-radius: 10px;
+}
+
+/* keys element styling */
+.keys {
+  color: white;
+  background-color: #040404;
+  width: 949px;
+  height: 180px;
+  padding-left: 2px;
+  overflow: hidden;
+}
+
+.key {
+  background-color: #ffffff;
+  position: relative;
+  width: 41px;
+  height: 175px;
+  margin: 2px;
+  float: left;
+  border-radius: 0 0 3px 3px;
+}
+
+/* target the elements with the class key black--key, and select the pseudo-element after these elements in the HTML */
+.key.black--key::after {
+  background-color: #1d1e22;
+  content: ""; /* make the target pseudo-elements empty */
+  position: absolute;
+  left: -18px;
+  width: 32px;
+  height: 100px;
+  border-radius: 0 0 3px 3px;
+}
+
+.logo {
+  width: 200px;
+  position: absolute;
+  top: 23px;
+}
+
+@media (max-width: 768px) {
+  #piano {
+    width: 358px;
+  }
+
+  .keys {
+    width: 318px;
+  }
+
+  .logo {
+    width: 150px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+  #piano {
+    width: 675px;
+  }
+  .keys {
+    width: 633px;
+  }
+}
+
+/* FCC - STEPS
+Step 16
+Time to style the keys themselves. Create a class selector for the .key elements. Set the background-color set to the value #ffffff, the position property to relative, the width property to 41px, and the height property to 175px.
+
+Step 17
+Give the .key a margin of 2px and a float property set to left.
+
+Step 18
+Now it is time to use the pseudo-selectors you prepared for earlier. To create the black keys, add a new .key.black--key::after selector. This will target the elements with the class key black--key, and select the pseudo-element after these elements in the HTML.
+In the new selector, set the background-color to #1d1e22. Also set the content property to "". This will make the pseudo-elements empty.
+The content property is used to set or override the content of the element. By default, the pseudo-elements created by the ::before and ::after pseudo-selectors are empty, and the elements will not be rendered to the page. Setting the content property to an empty string "" will ensure the element is rendered to the page while still being empty.
+If you would like to experiment, try removing the background-color property and setting different values for the content property, such as "♥". Remember to undo these changes when you are done so the tests pass.
+
+Step 19
+Give the .key.black--key::after a position property set to absolute and a left property set to -18px.
+
+Step 20
+For the .key.black--key::after, set the width to 32px and the height to 100px.
+
+Step 21
+The piano needs the freeCodeCamp logo to make it official.
+Add an img element before your .keys element. Give the img a class of logo, and set the src to https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg. Give it an alt text of freeCodeCamp Logo.
+
+Step 22
+Start styling the logo by creating a .logo selector. Set the width to 200px, a position of absolute and a top set to 23px.
+
+Step 23
+The img element needs its parent to have a position set as a point of reference. Set the position of the #piano selector to relative.
+
+Step 24
+To smooth the sharp edges of the piano and keys, start by giving the #piano a border-radius of 10px.
+
+Step 25
+Give the .key selector a border-radius value of 0 0 3px 3px.
+
+Step 26
+Give the .key.black--key::after selector a border-radius of 0 0 3px 3px to match the keys.
+
+Step 27
+The @media at-rule, also known as a media query, is used to conditionally apply CSS. Media queries are commonly used to apply CSS based on the viewport width using the max-width and min-width properties.
+In the below example the padding is applied to the .card class when the viewport is 960px wide and below.
+@media (max-width: 960px) {
+  .card {
+    padding: 2rem;
+  }
+}
+Add a media query that will be applied when the viewport is 768px wide and below.
+
+Step 28
+Add a new #piano selector within your @media query, and set the width to 358px.
+
+Step 29
+Within the @media query, add a .keys selector and set the width to 318px.
+
+Step 30
+Now add a .logo selector to the @media query, and set the width property to 150px.
+
+Step 31
+You might have noticed the keys collapse when the browser window is smaller than 768px. Set overflow to hidden in the first .keys selector, to take care of this issue. This property will hide any element that is pushed outside the set width value of .keys.
+
+Step 32
+Logical operators can be used to construct more complex media queries. The and logical operator is used to query two media conditions.
+For example, a media query that targets a display width between 500px and 1000px would be:
+@media (min-width: 500px) and (max-width: 1000px){
+
+Step 33
+For the new @media rule, set the width of the #piano to 675px and the width of the .keys to 633px.
+With that, your piano is complete!
+
+*/

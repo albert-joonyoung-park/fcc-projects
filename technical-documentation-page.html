@@ -14,24 +14,91 @@
   <body>
     <nav id="navbar">
       <header>Object Oriented Programming in Python</header>
-      <a class="nav-link" href="#Section_Topic_1">Section Topic 1</a>
+      <a class="nav-link" href="#Environment-Class_set-up"
+        >Environment-Class set-up</a
+      >
       <a class="nav-link" href="#Section_Topic_2">Section Topic 2</a>
       <a class="nav-link" href="#Section_Topic_3">Section Topic 3</a>
       <a class="nav-link" href="#Section_Topic_4">Section Topic 4</a>
       <a class="nav-link" href="#Variable_scope">Variable scope</a>
     </nav>
     <main id="main-doc">
-      <section class="main-section" id="Section_Topic_1">
-        <header>Section Topic 1</header>
+      <section class="main-section" id="Environment-Class_set-up">
+        <header>Environment-Class set-up</header>
         <article>
-          <p>pragrah</p>
+          <p><b>Assessment - Object-Oriented Programming in Python</b></p>
+          <ol>
+            <li>
+              Simulate a server that's taking connections from the outside
+            </li>
+            <li>
+              Simulate a load balancer that ensures that there are enough
+              servers to serve those connections
+            </li>
+          </ol>
+          <p><b>Enviroment set-up in Kaggle</b></p>
+          <!-- prettier-ignore -->
+          <code>
+            # This Python 3 environment comes with many helpful analytics libraries installed
+            # It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
+            # For example, here's several helpful packages to load
+
+            import numpy as np # linear algebra 
+            import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv) 
+              
+            # Input data files are available in the read-only "../input/" directory 
+            # For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory 
+            
+            import os 
+            for dirname, _, filenames in os.walk('/kaggle/input'): 
+                for filename in filenames:
+                    print(os.path.join(dirname, filename))
+          </code>
+          <p><b>Define a Server class for simulation</b></p>
           <ul>
-            <li>list item with long long item name very long</li>
-            <li>list item with not really long but.</li>
-            <li>list item short name</li>
+            <li>
+              Take care of the connections, represented by an id,(e.g. IP
+              address of the device connecting to the server)
+            </li>
+            <li>
+              For simulation, each connection creates a random amount of load in
+              the server, between 1 and 10.
+            </li>
           </ul>
-          <p>pragrah</p>
-          <code>some codes. </code>
+          <pre>
+          <!-- prettier-ignore -->
+          <code>
+            import random
+
+            class Server:
+                def __init__(self):
+                    """Creates a new server instance, with no active connections."""
+                    self.connections = {}
+
+                def add_connection(self, connection_id):
+                    """Adds a new connection to this server."""
+                    connection_load = random.random()*10+1
+                    # Add the connection to the dictionary with the calculated load
+                    self.connections[connection_id] = connection_load
+
+                def close_connection(self, connection_id):
+                    """Closes a connection on this server."""
+                    # Remove the connection from the dictionary
+                    del self.connections[connection_id]
+
+                def load(self):
+                    """Calculates the current load for all connections."""
+                    total = 0
+                    # Add up the load for each of the connections
+                    for load in self.connections.values():
+                        total += load
+                    return total
+
+                def __str__(self):
+                    """Returns a string with the current load of the server"""
+                    return "{:.2f}%".format(self.load())
+          </code>
+        </pre>
         </article>
       </section>
       <section class="main-section" id="Section_Topic_2">

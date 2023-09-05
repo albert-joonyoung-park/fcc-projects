@@ -1,7 +1,7 @@
-# login to Postgre database using the db t
-erminal
-psql --username=freecodecamp --dbname=postgres
+# Learn Relational database by building Mario Database with Postgre (Nintendo!!!)
 
+# login to Postgre database using the db terminal
+psql --username=freecodecamp --dbname=postgres
 # list up the databases
 \l
 
@@ -159,6 +159,9 @@ ALTER TABLE character_actions ADD FOREIGN KEY (action_id) REFERENCES actions(act
 \d character_actions
 ALTER TABLE character_actions ADD PRIMARY KEY (character_id, action_id);
 \d character_actions
+
+INSERT INTO character_actions(character_id, action_id) VALUES(7,1), (7,2), (7,3); // Yoshi(7) can perform all actions!
+
 
 
 

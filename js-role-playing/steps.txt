@@ -1,0 +1,866 @@
+Course: Learn Basic JavaScript by Building a Role Playing Game
+Course description: In this practice project, you'll learn fundamental programming concepts in JavaScript by coding your own Role Playing Game. You'll learn how to work with arrays, strings, objects, functions, loops, if/else statements, and more.
+
+Step 1
+JavaScript is a powerful language which allows you to build websites that are interactive.
+
+To get started, create your standard HTML boilerplate with a DOCTYPE, html, head, and body, then add a meta tag for the charset. Add a title element and use the text RPG - Dragon Repeller for it. Include a link tag for your stylesheet to link the styles.css file.
+
+Finally, create a div element with id set to game within your body.
+<br>
+
+Step 2
+Create four div elements within your #game element. Give them the following respective id values, in order: stats, controls, monsterStats, and text.
+<br>
+
+Step 3
+Create three span elements within your #stats element. Give each of them the class stat. Then give the first one the text XP: 0, the second one the text Health: 100, and the third one the text Gold: 50.
+<br>
+
+Step 4
+Wrap the numbers 0, 100, and 50 in span elements, and wrap those new span elements in strong elements. Then give your new span elements id values of xpText, healthText, and goldText, respectively.
+<br>
+
+Step 5
+For your #controls element, create three button elements. The first should have the id set to button1, and the text Go to store. The second should have the id set to button2, and the text Go to cave. The third should have the id set to button3, and the text Fight dragon.
+<br>
+
+Step 5
+For your #controls element, create three button elements. The first should have the id set to button1, and the text Go to store. The second should have the id set to button2, and the text Go to cave. The third should have the id set to button3, and the text Fight dragon.
+<br>
+
+Step 6
+Similar to your #stats element, your #monsterStats element needs two span elements. Give them the class stat and give the first element the text Monster Name: and the second the text Health: . After the text in each, add a strong element with an empty nested span element.
+<br>
+
+Step 7
+Give your #text element the following text:
+Welcome to Dragon Repeller. You must defeat the dragon that is preventing people from leaving the town. You are in the town square. Where do you want to go? Use the buttons above.
+
+Step 8
+Now we need some quick styling. Start by giving the body a background-color set to #0a0a23.
+
+Step 9
+Give the #text element a background-color of #0a0a23, a color of #ffffff, and 10px of padding on all sides.
+
+Step 10
+Give your #game a maximum width of 500px and a maximum height of 400px. Set the background-color to #ffffff and the color to #ffffff.
+
+Use margins to center it by setting the top margin to 30px, bottom margin to 0px, and the left and right margin to auto.
+
+Finally, give it 10px of padding on all four sides.
+
+Step 11
+Give both your #controls and #stats elements a border of 1px solid #0a0a23, a #0a0a23 text color, and 5px of padding.
+
+Step 12
+Give your #monsterStats element the same border and padding as your #stats element. Set its color to #ffffff and give it a #c70d0d background.
+
+Step 13
+For now, hide your #monsterStats element with the display property. Do not change any of the other styling.
+
+Step 14
+Next, give your .stat elements a padding-right of 10px.
+
+Step 15
+Finally, you will need to add some styles for your buttons. Start by setting the cursor property to pointer. Then set the text color to #0a0a23 and the background-color to #feac32.
+
+Then set the background-image property to linear-gradient(#fecc4c, #ffac33). Lastly, set the border to 3px solid #feac32.
+
+Step 16
+Now you can start writing your JavaScript. Begin by creating a script element. This element is used to load JavaScript into your HTML file. You should use an opening <script> and closing </script> tag.
+
+Step 17
+One of the most powerful tools is your developer console. Depending on your browser, this might be opened by pressing F12 or Ctrl+Shift+I. On Mac, you can press Option + ⌘ + C and select "Console". You can also click the "Console" button above the preview window to see our built-in console.
+
+The developer console will include errors that are produced by your code, but you can also use it to see values of variables in your code, which is helpful for debugging.
+
+Add a console.log("Hello World"); line between your script tags. Then click the "Console" button to open the console. You should see the text Hello World.
+
+Note how the line ends with a semi-colon. It is common practice in JavaScript to end your code lines with semi-colons.
+
+Step 18
+Before you start writing your project code, you should move it to its own file to keep things organized.
+
+Remove your console.log("Hello World"); line. Then give your now empty script element a src attribute set to ./script.js.
+
+Step 19
+Your view has been switched to your new script.js file. Remember that you can use the tabs above to switch between files.
+
+Add your console.log("Hello World"); line to this file, and see it appear in your console.
+
+Step 20
+Remove your console.log("Hello World"); line to begin writing your project code.
+
+In JavaScript, a variable is used to hold a value. To use a variable, you must first declare it. For example, to declare a variable called camperbot, you would write:
+
+var camperbot;
+The var keyword tells JavaScript you are declaring a variable. Declare a variable called xp.
+
+Step 21
+Variables can be assigned a value. When you do this while you declare it, this is called initialization. For example:
+
+var camperbot = "Bot";
+This would initialize the camperbot variable with a value of Bot, a string.
+
+Initialize your xp variable to have a value of 0, a number.
+
+Step 22
+Initialize another variable called health with a value of 100, and a variable called gold with a value of 50.
+
+
+Step 23
+Create another variable called currentWeapon and set it to 0.
+
+When a variable name has multiple words, the convention in JavaScript is to use what's called camelCase. The first word is lowercase, and the first letter of every following word is uppercase.
+
+Step 24
+You have been declaring your variables with the var keyword. However, in modern JavaScript it is best practice to use the let keyword instead. This fixes several unusual behaviors with var that can make your code difficult to debug.
+
+Change all of your var keywords to let.
+
+Step 25
+Using the let keyword, declare a variable called fighting but do not initialize it with a value. Remember to end your line with a semi-colon.
+
+Step 26
+Declare two more variables named monsterHealth and inventory, but do not initialize them.
+
+Step 27
+The variables you have assigned have all had values that are numbers. JavaScript has multiple different data types. The next one you will use is the string. Strings are used to store things like words or text. Strings are surrounded with double quotes, single quotes, or backticks. Here is an example of declaring a variable with a string:
+
+let developer = "Naomi";
+Assign the inventory variable to have the value of stick.
+
+Step 28
+The player's inventory in your game will be able to hold multiple items. You will need to use a data type that can do this. An array can be used to hold multiple values. For example:
+
+let order = ["first", "second", "third"];
+This is an array which holds three values. Notice how the values are separated by commas.
+
+Change your inventory variable to be an array with the strings stick, dagger, and sword.
+
+Step 29
+For now, you want the player to start with just the stick. Change the inventory array to have stick as its only value.
+
+Step 30
+JavaScript interacts with the HTML using the Document Object Model, or DOM. The DOM is a tree of objects that represents the HTML. You can access the HTML using the document object, which represents your entire HTML document.
+
+One method for finding specific elements in your HTML is using the querySelector() method. The querySelector() method takes a CSS selector as an argument and returns the first element that matches that selector. For example, to find the <h1> element in your HTML, you would write:
+
+let h1 = document.querySelector("h1");
+Note that h1 is a string and matches the CSS selector you would use.
+
+Create a button1 variable and use querySelector() to assign it your element with the id of button1. Remember that CSS id selectors are prefixed with a #.
+
+Step 31
+We have run in to a slight problem. You are trying to query your page for a button element, but your script tag is in the head of your HTML. This means your code runs before the browser has finished reading the HTML, and your document.querySelector() will not see the button - because the browser hasn't processed it yet.
+
+To fix this, move your script element out of the head element, and place it at the end of your body element (just before the closing </body> tag.)
+
+Step 32
+button1 is a variable that is not going to be reassigned. If you are not going to assign a new value to a variable, it is best practice to use the const keyword to declare it instead of the let keyword. This will tell JavaScript to throw an error if you accidentally reassign it.
+
+Change your button1 variable to be declared with the const keyword.
+
+Step 33
+Use querySelector() to get the other two button elements using their ids: button2 and button3. Store them in variables called button2 and button3. Remember to use const.
+
+Step 34
+Just like you did with the buttons, create variables for the following ids and use querySelector() to give them the element as a value:
+
+text, xpText, healthText, goldText, monsterStats, and monsterName.
+
+Remember to declare these with the const keyword, and name the variables to match the ids.
+
+Step 35
+Finally, use querySelector() to get the #monsterHealth element. Because you have already declared a monsterHealth variable earlier, you need to use a different variable name for this element.
+
+Declare a new variable with the const keyword and name it monsterHealthText.
+
+Step 36
+Comments allow you to add notes to your code. In JavaScript, single-line comments can be written with // and multi-line comments can be written with /* and */. For example, here are single and multi-line comments that say "Hello World":
+
+// hello world
+
+/*
+  hello world
+*/
+Add a single-line comment that says initialize buttons.
+
+Step 37
+button1 represents your first button element. These elements have a special property called onclick, which you can use to determine what happens when someone clicks that button.
+
+You can access properties in JavaScript a couple of different ways. The first is with dot notation. Accessing the onclick property of a button would look like:
+
+button.onclick
+Use dot notation to set the onclick property of your button1 to the variable goStore. This variable will be something you write later. Note that button1 is already declared, so you do not need to use let or const.
+
+
+Step 38
+Using the same syntax, set the onclick properties of button2 and button3 to goCave and fightDragon respectively.
+
+
+Step 39
+Functions are special tools that allow you to run sections of code at specific times. You can declare functions using the function keyword. Here is an example of a function called functionName - note the opening and closing curly braces. These indicate the section of code that is within the function.
+
+function functionName() {
+
+}
+Create an empty function named goStore. This will match the goStore variable you used earlier.
+
+
+Step 40
+For now, make your goStore function output the message Going to store. to the console. For example, here is a function that outputs the message Hello World.
+
+function functionName() {
+    console.log("Hello World");
+}
+
+Step 41
+Now create a goCave function that prints Going to cave. to the console.
+
+Step 42
+Now create a fightDragon function that prints Fighting dragon. to the console.
+
+Once you have done that, open your console and try clicking the buttons on your project.
+
+Step 43
+The innerText property controls the text that appears in an HTML element. For example:
+
+const info = document.querySelector("#info");
+info.innerText = "Hello World";
+This code would change the element assigned to the info variable to have the text Hello World.
+
+When a player clicks your Go to store button, you want to change the buttons and text. Remove the code inside the goStore function and add a line that updates the text of button1 to say Buy 10 health (10 gold).
+
+Step 44
+Now, add a line that updates the text of button2 to say Buy weapon (30 gold) and update the text of button3 to say Go to town square.
+
+Step 45
+You will also need to update the functions that run when the buttons are clicked again.
+
+In your goStore() function, update the onclick property for each button to run buyHealth, buyWeapon, and goTown, respectively.
+
+Step 46
+Now you need to modify your display text. Change the innerText property of the text to be You enter the store..
+
+Step 47
+Create three new empty functions called buyHealth, buyWeapon, and goTown.
+
+Step 48
+Move your goTown function above your goStore function. Then copy and paste the contents of the goStore function into the goTown function.
+
+Step 49
+In your goTown function, change your button elements' innerText properties to be Go to store, Go to cave, and Fight dragon. Update your onclick properties to be goStore, goCave, and fightDragon, respectively.
+
+Finally, update your text's innerText property to be You are in the town square. You see a sign that says Store..
+
+Step 50
+You need to wrap the text Store in double quotes. Because your string is already wrapped in double quotes, you'll need to escape the quotes around Store. You can escape them with a backslash \. Here is an example:
+
+const escapedString = "Naomi likes to play \"Zelda\" sometimes.";
+Wrap the text Store in double quotes within your text.innerText line.
+
+Step 51
+You have repetition in the goTown and goStore functions. When you have repetition in your code, this is a sign that you need another function. Functions can take parameters, which are values that are given to the function each time it is run. Here is a function that takes a parameter called param:
+
+function myFunction(param) {
+    console.log(param);
+}
+Create an empty update function that takes a parameter called location.
+
+Step 52
+Create a variable called locations and set it to an empty array.
+
+Step 53
+You previously used an array to store strings. But arrays can store any data type. This time, your array will be storing objects. Objects are similar to arrays, but with a few differences. One difference is that objects use properties, or keys, to access and modify data.
+
+Objects are indicated by curly braces. An empty object would look like {}.
+
+Add an empty object to your locations array.
+Step 54
+Object properties are written as key: value pairs, where key is the name of the property (or the key), and value is the value that property holds. For example, here is an object with a key of name set to Quincy Larson.
+
+{
+    name: "Quincy Larson"
+}
+Add a name property to your empty object and give it a value of town square.
+
+Step 55
+Just like array values, object properties are separated by a comma. Add a comma after your name property and add a button text property with the value of an empty array.
+
+Note that, because the property name has more than one word, you'll need to surround it in quotes. For example:
+
+{
+    name: "Naomi",
+    "favorite color": "purple"
+}
+
+Step 56
+Give your empty button text array three string elements. Use the three strings being assigned to the button innerText properties in the goTown function. Remember that array values are separated by commas.
+
+Step 57
+Create another property in your object called button functions. Give this property an array containing the three functions assigned to the onclick properties in the goTown function. Remember that these functions are variables, not strings, and should not be wrapped in quotes.
+
+Step 58
+Add one final property to the object named text. Give this property the final text.innerText value from the goTown function.
+
+Step 59
+Add a second object to your locations array (remember to separate them with a comma). Following the pattern you used in the first object, create the same properties but use the values from the goStore function. Set the name property to store.
+
+Step 60
+Now you can consolidate some of your code. Start by copying the code from inside the goTown function and paste it into your update function. Then, remove all the code from inside the goTown and goStore functions.
+
+Step 61
+Instead of assigning the innerText and onclick properties to specific strings and functions, the update function will use data from the location that is passed into it. First, that data needs to be passed.
+
+Inside the goTown function, call the update function. Here is an example of calling a function named myFunction:
+
+myFunction();
+
+Step 62
+You now need to pass the location argument into the update call. You pass arguments by including them within the parentheses of the function call. For example, calling myFunction with an arg argument would look like:
+
+myFunction(arg)
+Pass your locations array into the update call.
+
+Step 63
+The locations array contains two locations: the town square and the store. Currently you are passing that entire array into the update function.
+
+Pass in only the first element of the locations array by adding [0] at the end of the variable. For example: myFunction(arg[0]);.
+
+This is called bracket notation. Values in an array are accessed by index. Indices are numerical values and start at 0 - this is called zero-based indexing. arg[0] would be the first element in the arg array.
+
+Step 64
+Now your update function needs to use the argument you pass into it.
+
+Inside the update function, change the value of the button1.innerText assignment to be location["button text"]. That way, you use bracket notation to get the button text property of the location object passed into the function.
+
+Step 65
+location["button text"] is an array with three elements. Change the button1.innerText assignment to be the first element of that array instead.
+
+Step 66
+Now update button2.innerText and button3.innerText to be assigned the second and third values of the button text array, respectively.
+
+Step 67
+Following the same pattern as you did for the button text, update the three buttons' onclick assignments to be the first, second, and third values of the button functions array.
+
+Step 68
+Finally, update the text.innerText assignment to equal the text from the location object. However, instead of using bracket notation, use dot notation.
+
+Here is an example of accessing the name property of an object called person:
+
+person.name
+
+Step 69
+Now update your goStore function to call the update function. Pass the second element of the locations array as your argument.
+
+To make sure your refactoring is correct, try clicking your first button again. You should see the same changes to your webpage that you saw earlier.
+
+Step 70
+Create two more empty functions named fightSlime and fightBeast. These functions will be used in your upcoming cave object.
+
+Step 71
+Add a third object to the locations array. Give it the same properties as the other two objects.
+
+Set name to cave. Set button text to an array with the strings Fight slime, Fight fanged beast, and Go to town square. Set the button functions to an array with the variables fightSlime, fightBeast, and goTown. Set the text property to You enter the cave. You see some monsters..
+
+Step 72
+Now that you have a cave location object, update your goCave function to call update and pass that new cave location. Remember that this is the third element in your locations array.
+
+Don't forget to remove your console.log call!
+
+Step 73
+Now that your store and cave locations are complete, you can code the actions the player takes at those locations. Inside the buyHealth function, set gold equal to gold minus 10.
+
+For example, here is how you would set num equal to 5 less than num: num = num - 5;.
+
+Step 74
+After the gold is updated, add a line to set health equal to health plus 10.
+
+Step 75
+There is a shorthand way to add or subtract from a variable called compound assignment. For example, changing num = num + 5 to compound assignment would look like num += 5.
+
+Update both lines inside your buyHealth function to use compound assignment.
+
+tep 76
+Now that you are updating the gold and health variables, you need to display those new values on the game screen.
+
+After your assignment lines, assign the innerText property of goldText to be the variable gold. Use the same pattern to update healthText with the health variable.
+
+Here is an example:
+
+let value = 100;
+const total = document.querySelector('#total');
+total.innerText = value;
+You can test this by clicking your "Go to store" button, followed by your "Buy Health" button.
+
+Note: Your answer should only be two lines of code.
+
+Step 77
+What if the player doesn't have enough gold to buy health? When you want to run code conditionally, you can use the if statement. Put all of the code in your buyHealth function inside an if statement. For example:
+
+function myFunction() {
+    if ("condition") {
+        console.log("Hello World!");
+    }
+}
+For now, follow that pattern to use a string condition inside your if statement.
+
+Step 78
+The condition string is just a placeholder. Change the if statement condition to check if gold is greater than or equal to 10.
+
+Here is an if statement that checks if num is greater than or equal to 5:
+
+if (num >= 5) {
+
+}
+
+Step 79
+Now when a player tries to buy health, it will only work if they have enough money. If they do not, nothing will happen. Add an else statement where you can put code to run if a player does not have enough money.
+
+Here is an example of an empty else statement:
+
+if (num >= 5) {
+
+} else {
+
+}
+
+Step 80
+Inside the else statement, set text.innerText to equal You do not have enough gold to buy health..
+
+Step 81
+Use const to create a weapons variable above your locations array. Assign it an empty array.
+
+Step 82
+Just like your locations array, your weapons array will hold objects. Add four objects to the weapons array, each with two properties: name and power. The first should have the name set to stick and the power set to 5. The second should be dagger and 30. The third, claw hammer and 50. The fourth, sword and 100.
+
+Step 83
+Inside your buyWeapon function, add an if statement to check if gold is greater than or equal to 30.
+
+Step 84
+Similar to your buyHealth function, set gold equal to 30 less than its current value. Make sure this is inside your if statement.
+
+Step 85
+The value of the currentWeapon variable corresponds to an index in the weapons array. The player starts with a stick, since currentWeapon starts at 0 and weapons[0] is the stick weapon.
+
+In the buyWeapon function, use compound assignment to add 1 to currentWeapon - the user is buying the next weapon in the weapons array.
+
+Step 86
+Increasing a value by 1, or incrementing, has a special operator in JavaScript: ++. If you wanted to increase num by 1, you could write num++.
+
+Change your currentWeapon assignment to use the increment operator.
+
+Step 87
+Now update the goldText element to display the new value of gold, and update the text element to display You now have a new weapon..
+
+Step 88
+You should tell the player what weapon they bought. In between the two lines you just wrote, use let to initialize a new variable called newWeapon. Set this to equal weapons.
+
+Step 89
+Use bracket notation to access an object within the weapons array and assign it to your newWeapon variable. Place the variable currentWeapon within the brackets.
+
+When you use a variable in bracket notation, you are accessing the property or index by the value of that variable.
+
+For example, this code uses the index variable to access a value of array.
+
+let value = array[index];
+
+Step 90
+weapons[currentWeapon] is an object. Use dot notation to get the name property of that object.
+
+Step 91
+You can insert variables into a string with the concatenation operator +. Update the You now have a new weapon. string to say You now have a and the name of the new weapon. Remember to end the sentence with a period.
+
+Here is an example that creates the string Hello, our name is freeCodeCamp.:
+
+const ourName = "freeCodeCamp";
+const ourStr = "Hello, our name is " + ourName + ".";
+
+Step 92
+Back at the beginning of this project, you created the inventory array. Add the newWeapon to the end of the inventory array using the push() method.
+
+Here is an example:
+
+const arr = ["first"];
+const next = "second";
+arr.push(next);
+arr would now have the value ["first", "second"].
+
+Step 93
+Up until now, any time text.innerText was updated, the old text was erased. This time, use the += operator to add text to the end of text.innerText.
+
+Add the string In your inventory you have: - include the spaces at the beginning and the end.
+
+Step 94
+At the end of the second text.innerText string you just added, use the concatenation operator to add the contents of inventory to the string.
+
+Step 95
+Add an else statement to your buyWeapon function. In that statement, set text.innerText to equal You do not have enough gold to buy a weapon..
+
+Step 96
+Once a player has the best weapon, they cannot buy another one. Wrap all of the code in your buyWeapon function inside another if statement. The condition should check if currentWeapon is less than 3 - the index of the last weapon.
+
+Step 97
+Arrays have a length property that returns the number of items in the array. You may want to add new values to the weapons array in the future.
+
+Change your if condition to check if currentWeapon is less than the length of the weapons array. An example of checking the length of an array myArray would look like myArray.length.
+
+Step 98
+You now have an error to fix. The currentWeapon variable is the index of the weapons array, but array indexing starts at zero. The index of the last element in an array is one less than the length of the array.
+
+Change the if condition to check weapons.length - 1, instead of weapons.length.
+
+Step 99
+Add an else statement for your outer if statement. Inside this new else statement, set text.innerText to You already have the most powerful weapon!.
+
+Step 100
+Once a player has the most powerful weapon, you can give them the ability to sell their old weapons.
+
+In the outer else statement, set button2.innerText to Sell weapon for 15 gold. Also set button2.onclick to the function name sellWeapon.
+
+Step 101
+Create an empty sellWeapon function.
+
+Step 102
+Players should not be able to sell their only weapon. Inside the sellWeapon function, add an if statement with a condition that checks if the length of the inventory array is greater than 1.
+
+Step 103
+Inside the if statement, set gold equal to 15 more than its current value. Also update goldText.innerText to the new value.
+
+Step 104
+Use the let keyword to create a variable named currentWeapon. Don't assign it a value yet.
+
+Notice that you already have a currentWeapon variable elsewhere in your code. Since you are using the let keyword instead of var, the new currentWeapon is scoped only to this if statement. At the close of the if statement, the old currentWeapon will be used again.
+
+Step 105
+The shift() method on an array removes the first element in the array and returns it. Use this method to take the first element from the inventory array and assign it to your currentWeapon variable.
+
+Step 106
+After your currentWeapon, use the concatenation operator to set text.innerText to the string You sold a , then currentWeapon, then the string ..
+
+Step 107
+Now use the += operator to add the string In your inventory you have: and the contents of inventory to the text.innerText. Make sure to include the space at the beginning and end of the In your inventory you have: string.
+
+Step 108
+Use an else statement to run when the inventory length is not more than one. Set the text.innerText to say Don't sell your only weapon!.
+
+Step 109
+Now you can start the code to fight monsters. To keep your code organized, your fightDragon function has been moved for you to be near the other fight functions.
+
+Below your weapons array, define a monsters variable and assign it an array. Set that array to have three objects, each with a name, level, and health properties. The first object's values should be slime, 2, and 15, in order. The second should be fanged beast, 8, and 60. The third should be dragon, 20, and 300.
+
+Step 110
+Fighting each type of monster will use similar logic. Create an empty function called goFight to manage this logic.
+
+Step 111
+In your fightSlime function, set fighting equal to 0 - the index of slime in the monsters array. Remember that you already declared fighting earlier in your code, so you do not need let or const here.
+
+On the next line, call the goFight function.
+
+Step 112
+Following the same pattern, use that code in the fightBeast and fightDragon functions. Remember that beast is at index 1 and dragon is at index 2. Also, remove the console.log call from your fightDragon function.
+
+Step 113
+At the end of your code, create two empty functions named attack and dodge.
+
+Step 114
+Add a new object to the end of the locations array, following the same properties as the rest of the objects. Set name to fight, button text to an array with Attack, Dodge, and Run, button functions to an array with attack, dodge, and goTown, and text to You are fighting a monster..
+
+Step 115
+In the goFight function, call your update function with the fourth object in locations as an argument.Step 117
+The HTML element that shows the monster's stats has been hidden with CSS. Display the monsterStats element by updating the display property of the style property to block. For example, updating the first property of the name property of user would look like:
+
+user.name.first = "Naomi";
+
+Step 116
+Below your update call, set the monsterHealth to be the health of the current monster. You can get this value by accessing the health property of monsters[fighting] with dot notation.
+
+Step 118
+Now, set the innerText property of monsterName to be the name property of the current monster. Do the same for monsterHealthText and the health property.
+
+Step 119
+Now you can build the attack function. First, update the text message to say The [monster name] attacks., replacing [monster name] with the name of the monster. Remember you can use the concatenation operator for this.
+
+Step 120
+On a new line, add the string You attack it with your [weapon]. to the text value, replacing [weapon] with the player's current weapon.
+
+Step 121
+Next, set health to equal health minus the monster's level. Remember you can get this from the monsters[fighting].level property.
+
+Step 122
+Set monsterHealth to monsterHealth minus the power of the player's current weapon. Remember you have the currentWeapon variable and the power property.
+
+Step 123
+JavaScript offers the built-in Math utility which offers a number of mathematical tools. One of those is Math.random(), which generates a random number between 0 and 1. Another is Math.floor(), which rounds a given number down to the nearest integer.
+
+Using these, you can generate a random number within a range. For example, this generates a random number between 1 and 5: Math.floor(Math.random() * 5) + 1;.
+
+Following this pattern, use the addition operator (+) to add a random number between 1 and the value of xp to your monsterHealth variable change.
+
+Step 124
+Update healthText.innerText and monsterHealthText.innerText to equal health and monsterHealth.
+
+Step 125
+Add an if statement to check if health is less than or equal to 0. If it is, call the lose function.
+
+Step 126
+You can make an else statement conditional by using else if. Here's an example:
+
+if (num > 10) {
+
+} else if (num < 5) {
+
+}
+At the end of your if statement, add an else if statement to check if monsterHealth is less than or equal to 0. In your else if, call the defeatMonster function.
+
+Step 127
+At the end of your code, create the defeatMonster and lose functions. Leave them empty for now.
+
+Step 128
+Inside the dodge function, set text.innerText equal to the string You dodge the attack from the [monster]. Replace [monster] with the name of the monster, using the name property.
+
+Step 129
+In your defeatMonster function, set gold equal to gold plus the monster's level times 6.7. You can get the monster's level with the level property.
+
+Here is an example of setting num to num plus 5 * 8: num += 5 * 8. Use Math.floor() to round the result down.
+
+Step 130
+Set xp to xp plus the monster's level.
+
+Step 131
+Now update goldText and xpText to display the updated values.
+
+Step 132
+Finish the defeatMonster function by calling the update function with locations[4] as the argument.
+
+Step 133
+Your locations array doesn't have a fifth element, so locations[4] doesn't work.
+
+Add a new object at the end of the locations array, following the same structure as the other objects. Set name to kill monster, set button text to an array with three Go to town square strings, set button functions to an array with three goTown variables, and set text to The monster screams Arg! as it dies. You gain experience points and find gold..
+
+Step 134
+The word Arg! should have quotes around it. Besides escaping quotes, there is another way you can include quotation marks inside a string.
+
+Change the double quotes around the string The monster screams Arg! as it dies. You gain experience points and find gold. to single quotes ', then add double quotes around Arg!.
+
+Step 135
+After a monster is defeated, the monster's stat box should no longer display.
+
+On the first line of the update function, use monsterStats.style.display to change the display value to none.
+
+Step 136
+In the lose function, call the update function and pass in the sixth object of your locations array. Note that you haven't created this object just yet.
+
+Step 137
+At the end of your code, create a restart function. Inside this function, set xp to 0, health to 100, gold to 50, currentWeapon to 0, and set inventory to an array with the string stick.
+
+Also update the innerText properties of goldText, healthText, and xpText to their current values.
+
+Finally, call the goTown() function.
+
+Step 138
+In the locations array, add another object at the end. Set the name property to lose, set button text to an array with three REPLAY? strings, set button functions to an array with three restart variables, and set text to You die. ☠️. You can copy that text to use the emote.
+
+Step 139
+Back to your attack function - inside the else if block, create another if and else statement. If the player is fighting the dragon (fighting would be 2), call the winGame function. Move the defeatMonster() call to the else block.
+
+For this step, you will need to use the strict equality (===) operator to check if fighting is equal to 2. The strict equality operator will check if the values are equal and if they are the same data type.
+
+Here is an example that checks if num is strictly equal to 5:
+
+if (num === 5) {
+
+} else {
+
+}
+
+Step 140
+JavaScript has a conditional operator called the ternary operator. This can be used as a one-line if-else expression. The syntax is: condition ? true : false.
+
+Here is an example of an if-else expression changed to a ternary:
+
+if (num > 5) {
+  bigger()
+} else {
+  smaller()
+}
+
+num > 5 ? bigger() : smaller();
+Change your new if-else expression to a ternary.
+
+Step 141
+After the lose function, create a function called winGame. Inside the winGame function, call the update function and pass in locations[6].
+
+Step 142
+Add another object in the locations array. Everything should be the same as the lose object, except the name should be win and the text should be You defeat the dragon! YOU WIN THE GAME! 🎉.
+
+Step 143
+Your game could be complete now, but you can also make it more interesting.
+
+Inside your attack function, change your health -= monsters[fighting].level; line to health -= getMonsterAttackValue(monsters[fighting].level);. This sets health equal to health minus the return value of the getMonsterAttackValue function, and passes the level of the monster as an argument.
+
+Step 144
+Below your attack function, create an empty function named getMonsterAttackValue. It should take level as a parameter.
+
+Step 145
+The attack of the monster will be based on the monster's level and the player's xp. In the getMonsterAttackValue function, use const to create a variable called hit. Assign it the equation (level * 5) - (Math.floor(Math.random() * xp));.
+
+This will set the monster's attack to five times their level minus a random number between 0 and the player's xp.
+
+Step 146
+Log the value of hit to the console to use in debugging. Remember that you can do this with console.log().
+
+Step 147
+Functions run specific blocks of code when they are called, but they can also return a value. This value can be assigned to a variable and used elsewhere in your code.
+
+Use the return keyword to return the value of hit at the end of the function.
+
+Step 148
+If you play the game in its current state you might notice a bug. If your xp is high enough, the getMonsterAttackValue function will return a negative number, which will actually add to your total health when fighting a monster!
+
+In getMonsterAttackValue, change return hit to a ternary operator that returns hit if hit is greater than 0, or returns 0 if it is not.
+
+Here is an example of returning a value based on condition with a ternary:
+
+Step 149
+In your attack function, below the health variable, create an if statement. Set the condition to call the isMonsterHit function.
+
+Step 150
+Move your monsterHealth assignment into your if block.
+
+Step 151
+Add an else statement to the first if statement inside your attack() function. In the else statement, use the += operator to add the text You miss. to the end of text.innerText.
+
+Step 152
+Now create the isMonsterHit function. This will return a boolean value (true or false) to be used in your if statement. Return the result of the comparison Math.random() > .2.
+
+Step 153
+The player should hit if either Math.random() > .2 or if the player's health is less than 20.
+
+At the end of your return statement, use the logical or operator || and check if health is less than 20.
+
+The logical or operator will use the first value if it is truthy – that is, anything apart from NaN, null, 0, -0, 0n, "", and false. Otherwise, it will use the second value.
+
+For example: num < 10 || num > 20.
+
+Step 154
+On every attack, there should be a chance that the player's weapon breaks. At the end of the attack function, add an empty if expression with the condition Math.random() <= .1.
+
+Step 155
+Use the += operator to add Your [weapon] breaks., with a space in front of Your, to the end of text.innerText. Replace [weapon] with the last item in the inventory array using inventory.pop(), which will remove the last item in the array AND return it so it appears in your string.
+
+Step 156
+Remember that the increment operator ++ can be used to increase a variable's value by 1. There is also a decrement operator -- that can be used to decrease a variable's value by 1.
+
+Decrement the value of currentWeapon in your if statement, after you update the text.
+
+Step 157
+We don't want a player's only weapon to break. The logical AND operator checks if two statements are true.
+
+Use the logical AND operator && to add a second condition to your if statement. The player's weapon should only break if inventory.length does not equal (!==) one.
+
+Here is an example of an if statement with two conditions:
+
+if (firstName === "Quincy" && lastName === "Larson") {
+
+}
+
+Step 158
+Now you can add a small easter egg (hidden feature) to your game.
+
+Create a new function called easterEgg which calls the update function with locations[7] as the argument.
+
+Step 159
+Create an empty pick function with a parameter named guess.
+
+Step 160
+Create two new functions named pickTwo and pickEight.
+
+Inside each of those, call the pick() function and pass either 2 or 8 as the argument depending on the function name.
+
+Step 161
+Add another object to your locations array. Set name to easter egg, set button text to an array with the strings 2, 8, and Go to town square?, set button functions to an array with the variables pickTwo, pickEight, and goTown, and text to You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!.
+
+Step 162
+Inside pick, use let to initialize a variable named numbers and set it to an empty array.
+
+Step 163
+After your numbers array, create a while loop. A while loop accepts a condition, and will run the code in the block until the condition is no longer true.
+
+Your while loop should run while numbers.length is less than 10.
+
+Here is an example of a while loop that runs while i is less than five.
+
+while (i < 5) {
+
+}
+
+Step 164
+Inside your while loop, push a random number between 0 and 10 to the end of the numbers array. You can create this random number with Math.floor(Math.random() * 11).
+
+Step 165
+After the while loop, set text.innerText to equal You picked [guess]. Here are the random numbers:. Replace guess with the player's guess.
+
+Step 166
+At the end of the string, before the final quote, insert the new line escape character \n. This will cause the next part you add to text.innerText to appear on a new line.
+
+Step 167
+A for loop runs for a specific number of times. We will break down how a for loop runs in the next several steps. For now, copy this loop below and paste it at the end of your pick function.
+
+for (let x = 1; x < 5; x++) {
+
+}
+
+Step 168
+for loops are declared with three expressions separated by semicolons. for (a; b; c), where a is the initialization expression, b is the condition, and c is the final expression.
+
+The initialization expression is executed only once, before the loop starts, and is often used to define and set up the loop variable. Think of it like declaring a counter to use in your loop.
+
+Many for loops use i as the counter and start from 0, so change let x = 1; to let i = 0;.
+
+Step 168
+for loops are declared with three expressions separated by semicolons. for (a; b; c), where a is the initialization expression, b is the condition, and c is the final expression.
+
+The initialization expression is executed only once, before the loop starts, and is often used to define and set up the loop variable. Think of it like declaring a counter to use in your loop.
+
+Many for loops use i as the counter and start from 0, so change let x = 1; to let i = 0;.
+
+Step 169
+The second statement in a for loop, the condition statement, is evaluated at the beginning of every loop iteration. The loop will continue as long as the condition evaluates to be true.
+
+We want the loop to run 10 times, so change x < 5 to i < 10.
+
+Step 170
+The last statement in a for loop, the final expression, is executed at the end of each loop iteration.
+
+Since we changed the initialization statement to use i instead of x, change x++ to i++. This will increment the initializer i by 1 after each loop.
+
+
+Step 171
+Now you can write the logic to run in the loop. Inside your for loop, use the += operator to add to the end of text.innerText. Add the number at index i of the numbers array, using numbers[i]. Then add a new line, using the escape sequence you used earlier.
+
+Step 172
+The indexOf() array method returns the first index at which a given element can be found in the array, or -1 if the element is not present.
+
+After your for loop, add an if expression to check if the guess is in the numbers array. You can check if indexOf is not equal (!==) to -1.
+
+Here is an example of the indexOf syntax:
+
+const numbers = [1, 2, 3];
+numbers.indexOf(2) // 1
+
+Step 173
+Inside the if expression, add the string Right! You win 20 gold! to the end of text.innerText. Also, add 20 to the value of gold and update the goldText.innerText.
+
+Step 174
+Now add an else expression. Inside, add Wrong! You lose 10 health! to the end of text.innerText. Subtract 10 from health and update healthText.innerText.
+
+Step 175
+Since you subtracted health from the player, you need to check if the player's health is less than or equal to 0. If it is, call the lose function.
+
+Step 176
+Looking at your kill monster object, button functions currently has three goTown variables. Replace the third one with easterEgg - this is how a player will access the hidden feature of the game. Do not change the button text.
+
+With this, your RPG game is complete! You can now play around - can you defeat the dragon?

@@ -1,0 +1,479 @@
+=============================================================================================
+
+Course: Learn From Validation by Building a Calorie Counter
+Description: Sometimes when you're coding a web application, you'll need to be able to accept input from a user. In this calorie counter project, you'll learn how to validate user input, perform calculations based on that input, and dynamically update your interface to display the results.
+
+In this practice project, you'll learn basic regular expressions, template literals, the addEventListener() method, and more.
+
+
+----------------------------------------------------------------------------------------------
+Step 1
+You have been provided with boilerplate CSS and HTML. However, you need to build your calorie counter form.
+
+Feel free to explore the HTML and CSS, then add a form element and give it an id set to calorie-counter.
+
+Step 2
+Create a label element, give it a for attribute set to budget and the text Budget, then create an input element with the id set to budget.
+
+Step 3
+Your input element needs some additional attributes. Give it a type set to number to only allow numeric inputs, a min attribute set to 0 to only allow positive numbers, and a placeholder set to Daily calorie budget.
+
+Finally, mark the input element as required.
+
+Step 4
+Create a fieldset element with the id set to breakfast.
+
+Within that element, create a legend with the text Breakfast, and an empty div with the class set to input-container.
+
+Step 5
+Now create a fieldset with an id set to lunch, and a corresponding legend and div element.
+
+Step 6
+Continuing the pattern, create a fieldset for dinner with the same nested elements.
+
+Step 7
+You need two more of these fieldset code blocks – one for snacks and one for exercise.
+
+Step 8
+Create a div and give it a class set to controls. Nest a span element within that div.
+
+Step 9
+In your span element, create a label element for an entry-dropdown and give it the text Add food or exercise:. Then create a select element with the id set to entry-dropdown and a name set to options. Below that, add a button element with the id set to add-entry and the text Add Entry.
+
+Give your button element a type attribute set to button to prevent automatic form submission.
+
+Step 10
+Your select menu needs options for each of the food and exercise fieldset elements you created in the previous steps. Use the option element to create a new option for each fieldset. The value attribute of each option should be the id of the fieldset, and the text of each option should be the text of the legend.
+
+Set the Breakfast option as the selected option.
+
+Step 11
+Create another div element. Within it, nest a button to submit the form, with an id set to calculate-calories. This button should have the text Calculate Remaining Calories.
+
+Then add a button with the id set to clear to clear the form (don't forget to give it a type attribute that prevents it from submitting the form). This button needs the text Clear.
+
+Step 12
+Your form needs somewhere to display the results. Add an empty div element and give it an id of output and the class values of output and hide.
+
+Step 13
+Finally, you need to link your JavaScript file to your HTML. Create a script element to do so.
+
+Step 14
+It is time to start writing the script that makes your form work.
+
+To access an HTML element with a given id name, you can use the getElementById() method. Here's an example of how to use this method:
+
+<h1 id="title">Main title</h1>
+const mainTitleElement = document.getElementById('title');
+Begin by getting the form element (using the id) and storing it in a variable called calorieCounter.
+
+Step 15
+Get your #budget element and assign it to budgetNumberInput, and your #entry-dropdown element and assign it to entryDropdown.
+
+Step 16
+Following the same pattern, assign your #add-entry element to addEntryButton, your #clear element to clearButton, and your #output element to output.
+
+Step 17
+Declare an isError variable and set it to false, but use let so you can reassign it later.
+
+Step 18
+Even though you set an input element to be a number, JavaScript receives a string value. You need to write a function to clean the string value and ensure you have a number.
+
+Start by declaring a cleanInputString function that takes a str argument.
+
+Step 19
+You need to split your str into individual characters. You can use the split() method to do this.
+
+The split() method splits a string into an array of substrings, and returns the new array. You can pass in an optional separator which tells the method where each split should happen.
+
+For example, passing an empty string into the split method will split the string into an array of individual characters.
+
+const str = 'Hello World';
+const strArray = str.split('');
+// ["H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d"]
+Split the string passed into the cleanInputString function into an array of individual characters and assign it to a variable named strArray.
+
+Step 20
+Declare a cleanStrArray variable and assign it an empty array. You will use this to store your valid number characters.
+
+Step 21
+Use a for loop to iterate through each character in your strArray array.
+
+Step 22
+Within your loop, you need to check if the character in strArray at index i is not a +, -, or a space. If it is not, push it to the cleanStrArray.
+
+You will need to check if the array ["+", "-", " "] does not include the current character. You can use a combination of the includes() method and the ! operator to do this.
+
+The .includes() method returns true if the array contains the character, and false if not. The logical NOT operator (!) will return the opposite of the value of the .includes() method.
+
+Here is an example:
+
+const numbersArray = [1, 2, 3, 4, 5]
+const number = 6
+
+if (!numbersArray.includes(number)) {
+  console.log("The number is not in the array.")
+}
+
+Step 23
+While looping through the string works, creating a new array is inefficient for memory and runtime performance. Instead, you can use Regular Expressions (referred to as "regex") to match specific characters.
+
+Regex in JavaScript is indicated by a pattern wrapped in forward slashes – for example:
+
+const regex = /hello/;
+Remove your existing code within the cleanInputString function. Declare a regex variable and assign it the value from the example above.
+
+Step 24
+The pattern you currently have will match the exact text hello, which is not what you want to match. You want to look for +, -, or spaces. Replace the pattern in your regex variable with \+- to look for plus and minus characters.
+
+Note that you need to use the \ to escape the +, because a + has a special meaning in regular expressions.
+
+Step 25
+In regex, shorthand character classes allow you to match specific characters without having to write those characters in your pattern. Shorthand character classes are preceded with a backslash (\). The character class \s will match any whitespace character. Add this to your regex pattern.
+
+Step 26
+Your current pattern won't work just yet. /+-\s/ looks for +, -, and a space in order. This would match +- hello but would not match +hello.
+
+To tell the pattern to match each of these characters individually, you need to turn them into a character class. This is done by wrapping the characters you want to match in brackets. For example, this pattern will match the characters h, e, l, or o:
+
+const regex = /[helo]/;
+Turn your +-\s pattern into a character class. Note that you no longer need to escape the + character, because you are using a character class.
+
+Step 27
+Regex can also take specific flags to alter the pattern matching behavior. Flags are added after the closing /. The g flag, which stands for "global", will tell the pattern to continue looking after it has found a match. Here is an example:
+
+const helloRegex = /hello/g;
+Add the g flag to your regex pattern.
+
+Step 28
+Strings have a .replace() method which allows you to replace characters in the string with another string. .replace takes two arguments. The first is the character sequence to replace – this can either be a string or a regex pattern. The second is the string to replace that sequence with. For example, this would replace all instances of l with 1:
+
+"hello".replace(/l/g, "1");
+Use your regex to replace all instances of +, -, and a space in str with an empty string. Return this value.
+
+Step 29
+In HTML, number inputs allow for exponential notation (such as 1e10). You need to filter those out.
+
+Start by creating a function called isInvalidInput – it should take a single str parameter.
+
+Step 30
+Declare a regex variable, and assign it a regex that matches the character e.
+
+Step 31
+The e in a number input can also be an uppercase E. Regex has a flag for this, however – the i flag, which stands for "insensitive". This flag makes your pattern case-insensitive. Add the i flag to your regex pattern.
+
+Step 32
+Number inputs only allow the e to occur between two digits. To match any number, you can use the character class [0-9]. This will match any digit between 0 and 9.
+
+Add this character class before and after e in your pattern.
+
+Step 33
+The + modifier in a regex allows you to match a pattern that occurs one or more times. To match your digit pattern one or more times, add a plus after each of the digit character classes. For example: [0-9]+.
+
+Step 34
+There is a shorthand character class to match any digit: \d. Replace your [0-9] character classes with this shorthand.
+
+Step 35
+Strings have a .match() method, which takes a regex argument. .match() will return an array of match results – containing either the first match, or all matches if the global flag is used.
+
+Return the result of calling the .match() method on str and passing your regex variable as the argument. You'll use this match result later on.
+
+Step 36
+Your next step is to allow users to add entries to the calorie counter. Declare an empty function addEntry. This function should not take any parameters.
+
+Step 37
+You'll need to know which category the entry goes in. Thankfully, you added a dropdown for the user to select a category.
+
+Remember that you queried that dropdown earlier in your JavaScript and assigned it to the entryDropdown button. You can use the value property to get the value of the selected option.
+
+Use concatenation to add a # to the beginning of the value property of entryDropdown, and assign that result to a targetId variable.
+
+Step 38
+Now you need to target the .input-container element within the element that has your targetId. Declare a new targetInputContainer variable, and assign it the value of document.querySelector(). Use concatenation to separate targetId and '.input-container' with a space, and pass that string to querySelector().
+
+Step 39
+JavaScript has a feature called template literals, which allow you to interpolate variables directly within a string. Template literals are denoted with backticks ``, as opposed to single or double quotes. Variables can be passed in to a template literal by surrounding the variable with ${} – the value of the variable will be inserted into the string.
+
+For example:
+
+const name = "Naomi";
+const templateLiteral = `Hello, my name is ${name}~!`;
+console.log(templateLiteral);
+The console will show the string "Hello, my name is Naomi~!".
+
+Replace your concatenated string in the querySelector with a template literal – be sure to keep the space between your targetId variable and .input-container.
+
+Step 40
+Thanks to template literals, you actually don't need the targetId variable at all. Remove that variable, and update your template literal to replace targetId with entryDropdown.value – remember to add # before that, in the string.
+
+Step 41
+You will want to number the entries a user adds. To get all of the number inputs, you can use the querySelectorAll() method.
+
+The querySelectorAll() method returns a NodeList of all the elements that match the selector. A NodeList is an array-like object, so you can access the elements using bracket notation.
+
+Declare an entryNumber variable and give it the value of targetInputContainer.querySelectorAll(). You do not need to pass an argument to the query selector yet.
+
+Step 42
+Each entry will have a text input for the entry's name, and a number input for the calories. To get a count of the number of entries, you can query by text inputs. Note that you cannot query by number inputs, as you have an extra number input for the user's calorie budget.
+
+Pass the string input[type="text"] to the querySelectorAll() method. Remember that you will need to use single quotes for your string, so that you can use double quotes within.
+
+This will return a NodeList of all the text inputs in the form. You can then access the length property of the NodeList to get the number of entries. Do this on the same line.
+
+Step 43
+Now you need to build your dynamic HTML string to add to the webpage. Declare a new HTMLString variable, and assign it an empty template literal string.
+
+Step 44
+Start your HTMLString with a new line, then create a label element. Give that element the text Entry # Name, using your template literal syntax to replace # with the value of entryNumber.
+
+Step 45
+Give your label element a for attribute with the value X-#-name, where X is the value of the entryDropdown element and # is the value of entryNumber. Remember that HTML attributes should be wrapped in double quotes.
+
+Step 46
+After your label element, and on a new line in your template string, create an input element. Give it a type attribute set to text, a placeholder attribute set to Name, and an id attribute that matches the for attribute of your label element.
+
+Step 47
+Create another label element (on a new line) at the end of your HTMLString. This label should have the text Entry # Calories, using your template literal syntax to replace # with the value of entryNumber, and the for attribute set to X-#-calories, where X is the value of entryDropdown and # is the value of entryNumber.
+
+Step 48
+Finally, on a new line after your second label, create another input element. Give this one a type attribute set to number, a min attribute set to 0 (to ensure negative calories cannot be added), a placeholder attribute set to Calories, and an id attribute that matches the for attribute of your second label element.
+
+Step 49
+To see your new HTML content for the targetInputContainer, you will need to use the innerHTML property.
+
+The innerHTML property sets or returns the HTML content inside an element. Here is an example of how to use it:
+
+<div id="container">
+  <p>Example paragraph</p>
+</div>
+const container = document.getElementById("container");
+container.innerHTML += `
+  <p>adding new content</p>
+`;
+Add your new HTMLString to the targetInputContainer by using the innerHTML property. Remember to use the += operator to add to the existing HTML instead of replacing it.
+
+Step 50
+In the Role Playing Game project, you learned how to set a button's behavior by editing its onclick property. You can also edit an element's behavior by adding an event listener.
+
+Call the .addEventListener() method of the addEntryButton. This takes two arguments. The first is the event to listen to – you should pass the string click. The second is the callback function, or the function that runs when the event is triggered. Pass the addEntry function as the second argument. Note that you should not call addEntry, but pass the variable (or function reference) directly.
+
+Step 51
+Try adding a couple of entries to the Breakfast category, and you may notice some bugs! The first thing we need to fix is the entry counts – the first entry should have a count of 1, not 0.
+
+This bug occurs because you are querying for input[type="text"] elements before adding the new entry to the page. To fix this, update your entryNumber variable to be the value of the length of the query plus 1. Add this on your declaration line, not in your template strings.
+
+Step 52
+Your other bug occurs if you add a Breakfast entry, fill it in, then add a second Breakfast entry. You'll see that the values you added disappeared.
+
+This is because you are updating innerHTML directly, which does not preserve your input content. Change your innerHTML assignment to use the insertAdjacentHTML() method of targetInputContainer instead. Do not pass any arguments yet.
+
+Step 53
+The insertAdjacentHtml method takes two arguments. The first argument is a string that specifies the position of the inserted element. The second argument is a string containing the HTML to be inserted.
+
+For the first argument, pass the string beforeend to insert the new element as the last child of targetInputContainer.
+
+For the second argument, pass your HTMLString variable.
+
+Step 54
+Great! Now you can add entries without losing your previous inputs.
+
+Your next step is to write a function that will get the calorie counts from the user's entries.
+
+Declare a getCaloriesFromInputs function, and give it a parameter called list.
+
+Step 55
+In your new function, declare a calories variable and assign it the value 0. Use let to declare it, since you will be reassigning it later.
+
+Step 56
+The list parameter is going to be the result of a query selector, which will return a NodeList. A NodeList is an array-like which contains the elements that match the query selector.
+
+You'll need to loop through these elements, so start by creating a for loop. Your iterator i should start at 0, continue while it is less than the length of the list, and increment by 1 each iteration.
+
+Step 57
+The NodeList values you will pass to list will consist of input elements. So you will want to look at the value attribute of each element.
+
+Assign the value of the element in list at index i to a variable called currVal.
+
+Step 58
+Remember that you wrote a function earlier to clean the user's input? You'll need to use that function here.
+
+Update your currVal declaration to be the result of calling cleanInputString with list[i].value.
+
+Step 59
+You also need to confirm the input is valid. Declare an invalidInputMatch variable, and assign it the result of calling your isInvalidInput function with currVal as the argument.
+
+Step 60
+Remember that your isInvalidInput function returns String.match, which is an array of matches or null if no matches are found.
+
+In JavaScript, values can either be truthy or falsy. A value is truthy if it evaluates to true when converted to a Boolean. A value is falsy if it evaluates to false when converted to a Boolean. null is an example of a falsy value.
+
+You need to check if invalidInputMatch is truthy – you can do this by passing the variable directly to your if condition (without a comparison operator). Here's an example of checking the truthiness of helloWorld.
+
+if (helloWorld) {
+
+}
+Add an if statement that checks if invalidInputMatch is truthy.
+
+Step 61
+Browsers have a built in alert() function, which you can use to display a pop-up message to the user. The message to display is passed as the argument to the alert() function.
+
+Using a template literal, in your if block, call the alert() function to tell the user Invalid Input: , followed by the first value in the invalidInputMatch array.
+
+Step 62
+Still within your if block, set isError to true and return null.
+
+Step 63
+Remember that return ends the execution of a function. After your if block, you need to handle the logic for when the input is valid. Because your if statement returns a value, you do not need an else statement.
+
+Use the addition assignment operator to add currVal to your calories total. You'll need to use the Number constructor to convert currVal to a number.
+
+The Number constructor is a function that converts a value to a number. If the value cannot be converted, it returns NaN which stands for "Not a Number".
+
+Here is an example:
+
+Number('10'); // returns the number 10
+
+Step 64
+After your for loop has completed, return the calories value.
+
+Step 65
+Now it's time to start putting it all together. Declare an empty calculateCalories function, which takes a parameter named e. This function will be another event listener, so the first argument passed will be the browser event – e is a common name for this parameter.
+
+Step 66
+You will be attaching this function to the submit event of the form. The submit event is triggered when the form is submitted. The default action of the submit event is to reload the page. You need to prevent this default action using the preventDefault() method of your e parameter.
+
+Add a line to your calculateCalories function that calls the preventDefault() method on the e parameter. Then, reset your global error flag to false.
+
+Step 67
+Your function needs to get the values from the entries the user has added.
+
+Declare a breakfastNumberInputs variable, and give it the value of calling document.querySelectorAll() with the selector #breakfast input[type=number]. This will return any number inputs that are in the #breakfast element.
+
+Step 68
+Using that same syntax, query your number inputs in the #lunch element and assign them to lunchNumberInputs.
+
+Step 69
+Following the same pattern, query for your number inputs in the #dinner, #snacks, and #exercise elements. Assign them to variables following the naming scheme of the previous two.
+
+Step 70
+Now that you have your lists of elements, you can pass them to your getCaloriesFromInputs function to extract the calorie total.
+
+Declare a breakfastCalories variable, and assign it the result of calling getCaloriesFromInputs with breakfastNumberInputs as the argument.
+
+Step 71
+Now declare a lunchCalories variable, and give it the value of calling getCaloriesFromInputs with your lunchNumberInputs.
+
+Step 72
+Following this same pattern, declare variables for the number inputs in the #dinner, #snacks, and #exercise elements. Assign them the appropriate getCaloriesFromInputs calls.
+
+Step 73
+You also need to get the value of your #budget input. You already queried this at the top of your code, and set it to the budgetNumberInput variable. However, you used getElementById, which returns an Element, not a NodeList.
+
+A NodeList is an array-like, which means you can iterate through it and it shares some common methods with an array. For your getCaloriesFromInputs function, an array will work for the argument just as well as a NodeList does.
+
+Declare a budgetCalories variable and set it to the result of calling getCaloriesFromInputs – pass an array containing your budgetNumberInput as the argument.
+
+354
+355 Step 69
+356 Following the same pattern, query for your number inputs in the #dinner, #snacks, and     #exercise elements. Assign them to variables following the naming scheme of the prev    ious two.
+357
+358 Step 70
+359 Now that you have your lists of elements, you can pass them to your getCaloriesFromIn    puts function to extract the calorie total.
+360
+361 Declare a breakfastCalories variable, and assign it the result of calling getCalories    FromInputs with breakfastNumberInputs as the argument.
+362
+363 Step 71
+364 Now declare a lunchCalories variable, and give it the value of calling getCaloriesFro    mInputs with your lunchNumberInputs.
+365
+366 Step 72
+367 Following this same pattern, declare variables for the number inputs in the #dinner,     #snacks, and #exercise elements. Assign them the appropriate getCaloriesFromInputs ca    lls.
+368
+369 Step 73
+370 You also need to get the value of your #budget input. You already queried this at the     top of your code, and set it to the budgetNumberInput variable. However, you used ge    tElementById, which returns an Element, not a NodeList.
+371
+372 A NodeList is an array-like, which means you can iterate through it and it shares som    e common methods with an array. For your getCaloriesFromInputs function, an array wil    l work for the argument just as well as a NodeList does.
+373
+374 Declare a budgetCalories variable and set it to the result of calling getCaloriesFrom    Inputs – pass an array containing your budgetNumberInput as the argument.
+
+Step 74
+Your getCaloriesFromInputs function will set the global error flag to true if an invalid input is detected. Add an if statement to your calculateCalories function that checks the truthiness of your global error flag, and if it is truthy then use return to end the function execution.
+
+Step 75
+It is time to start preparing your calculations. Start by declaring a consumedCalories variable, and assign it the sum of breakfastCalories, lunchCalories, dinnerCalories, and snacksCalories (note that order matters for the tests). Be sure to do this after your if statement.
+
+Step 76
+Now declare a remainingCalories variable, and give it the value of subtracting consumedCalories from budgetCalories and adding exerciseCalories.
+
+Step 77
+You need to know if the user's calories are a surplus or a deficit. Declare a surplusOrDeficit variable.
+
+Use a ternary operator to set surplusOrDeficit to the string Surplus or Deficit depending on whether remainingCalories is greater than or equal to 0. If it is greater than or equal to 0, then surplusOrDeficit should be Surplus. Otherwise, it should be Deficit.
+
+Step 78
+You need to construct the HTML string that will be displayed in the output element. Start by assigning an empty template literal to the innerHTML property of the output element.
+
+Step 79
+Your output.innerHTML string will need a span element. Create that, and give it a class attribute set to the surplusOrDeficit variable, but lowercased.
+
+Strings have a .toLowerCase() method that can help you with this. Do not give your span any text yet.
+
+Step 80
+Give your span the text remainingCalories Calorie surplusOrDeficit, using interpolation to replace remainingCalories and surplusOrDeficit with the appropriate variables.
+
+Step 81
+When the user has a calorie deficit, the remainingCalories value will be negative. You don't want to display a negative number in the result string.
+
+Math.abs() is a built-in JavaScript method that will return the absolute value of a number. In your span text, wrap your remainingCalories reference in Math.abs() to ensure that the value is positive.
+
+Step 82
+After your span element, add an hr element to create a horizontal line.
+
+To keep your code clean and readable, you should add this on a new line in the template literal.
+
+Step 83
+Now create a p element with the text budgetCalories Calories Budgeted, using interpolation to replace budgetCalories with the appropriate variable.
+
+This should come after your hr element.
+
+Step 84
+Using the same interpolation syntax, add a second p element with the text consumedCalories Calories Consumed and a third with the text exerciseCalories Calories Burned. Remember to replace your consumedCalories and exerciseCalories variables with the appropriate values.
+
+Step 85
+Finally, you need to make the #output element visible so the user can see your text. Your output variable is an Element, which has a classList property. This property has a .remove() method, which accepts a string representing the class to remove from the element.
+
+Use the .remove() method of the output variable's classList property to remove the hide class. Don't forget to place the word hide inside quotes.
+
+Step 86
+If you click on your Calculate Remaining Calories button, you'll see that nothing happens. You still need to mount the event listener.
+
+Add an event listener to your calorieCounter element. The event type should be submit, and the callback function should be calculateCalories.
+
+Step 87
+Your final feature to add is the ability for a user to clear the form. Start by declaring an empty function called clearForm – it should not take any arguments.
+
+Step 88
+You need to get all of the input containers. Declare an inputContainers variable, and assign it to the value of querying the document for all elements with the class input-container.
+
+Step 90
+It is time for another loop. Use a for loop to iterate through the inputContainers array.
+
+Inside the loop, set the innerHTML property of the element at the current index to an empty string. This will clear all of the contents of that input container.
+
+Step 91
+After your loop completes, you need to clear the budgetNumberInput. Set the value property of budgetNumberInput to an empty string.
+
+Step 92
+You also need to clear the output element's text. You can do this by setting the innerText property to an empty string.
+
+The difference between innerText and innerHTML is that innerText will not render HTML elements, but will display the tags and content as raw text.
+
+Step 93
+To finish off this function, you need to restore the hide class to the output element. The classList property has an .add() method which is the opposite of the .remove() method. It accepts a string representing the class to add to the element.
+
+Add the hide class to your output.
+
+Step 94
+To complete this project, add an event listener to the clearButton button. When the button is clicked, it should call the clearForm function.
+
+Congratulations! Your project is complete.
+

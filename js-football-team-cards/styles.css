@@ -1,0 +1,74 @@
+/* Global box-sizing and reset for all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variable definitions for color scheme */
+:root {
+  --dark-grey: #2d2d30;
+  --light-grey: #f5f6f7;
+  --white: #ffffff;
+  --black: #000;
+}
+
+/* Styling for the entire page */
+body {
+  background-color: var(--dark-grey);
+  text-align: center;
+  padding: 10px;
+}
+
+/* Shared styles for title, labels, team stats, and footer */
+.title,
+.options-label,
+.team-stats,
+footer {
+  color: var(--white);
+}
+
+/* Styling for the main title */
+.title {
+  margin: 1.3rem 0;
+}
+
+/* Styling for the team stats section */
+.team-stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-size: 1.3rem;
+  margin: 1.2rem 0;
+}
+
+/* Styling for the dropdown label */
+.options-label {
+  font-size: 1.2rem;
+}
+
+/* Styling for the player cards container */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for individual player cards */
+.player-card {
+  background-color: var(--light-grey);
+  padding: 1.3rem;
+  margin: 1.2rem;
+  width: 300px;
+  border-radius: 15px;
+}
+
+/* Media query for responsive design below 768px */
+@media (max-width: 768px) {
+  .team-stats {
+    flex-direction: column;
+  }
+}

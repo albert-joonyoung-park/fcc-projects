@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Metadata for character set and viewport -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title for the document -->
+    <title>Football Team Cards</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Main heading for the page -->
+    <h1 class="title">Team stats</h1>
+    <!-- Main content section -->
+    <main>
+      <!-- Container for team statistics -->
+      <div class="team-stats">
+        <p>Team: <span id="team"></span></p>
+        <p>Sport: <span id="sport"></span></p>
+        <p>Year: <span id="year"></span></p>
+        <p>Head coach: <span id="head-coach"></span></p>
+      </div>
+
+      <!-- Dropdown for filtering teammates -->
+      <label class="options-label" for="players">Filter Teammates:</label>
+      <select name="players" id="players">
+        <option value="all">All Players</option>
+        <option value="nickname">Nicknames</option>
+        <option value="forward">Position Forward</option>
+        <option value="midfielder">Position Midfielder</option>
+        <option value="defender">Position Defender</option>
+        <option value="goalkeeper">Position Goalkeeper</option>
+      </select>
+
+      <!-- Container for player cards -->
+      <div class="cards" id="player-cards">
+        <!-- Individual player cards with details -->
+        <!-- ... (player cards content) ... -->
+      </div>
+    </main>
+
+    <!-- Footer section with copyright information -->
+    <footer>&copy; freeCodeCamp</footer>
+
+    <!-- Script tag linking to external JavaScript file -->
+    <script src="./script.js"></script>
+  </body>
+</html>

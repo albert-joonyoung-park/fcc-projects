@@ -6,7 +6,7 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: #0a0a23;
+  background-color: #f4b400;
   color: #ffffff;
 }
 
@@ -45,7 +45,7 @@ body {
   padding: 20px;
   margin: 10px 0;
   background-color: white;
-  box-shadow: 0 6px 6px #002ead;
+  box-shadow: 0 6px 6px #4285f4;
 }
 
 label {
@@ -58,7 +58,7 @@ label {
   border: none;
   padding: 10px;
   border-radius: 15px;
-  background-color: #5a01a7;
+  background-color: #4285f4;
   color: #fff;
   cursor: pointer;
 }
@@ -70,13 +70,15 @@ label {
   font-size: 1.2rem;
   margin: 10px;
   border: none;
-  border-bottom: 2px solid #5a01a7;
+  border-bottom: 2px solid #4285f4;
 }
 
+/* pseudo-class to apply when element is focused or seleted by user */
 .palindrome-input:focus {
   border-bottom: 3px solid #5a01a7;
 }
 
+/* pseudo-element to select and style placeholder text */
 .palindrome-input::placeholder {
   text-align: center;
 }
@@ -102,7 +104,7 @@ label {
   width: min(100vw, 450px);
   font-size: 1.3rem;
   min-height: 140px;
-  background-color: #00471b;
+  background-color: #179c52;
   margin-top: 20px;
   padding: 20px;
   border-radius: 20px;
@@ -115,3 +117,142 @@ label {
   vertical-align: middle;
   text-align: center;
 }
+
+/*
+* (Universal Selector):
+
+Styles applied to all elements on the page.
+Styles:
+margin: 0;: Sets the margin of all elements to zero.
+padding: 0;: Sets the padding of all elements to zero.
+box-sizing: border-box;: Ensures that padding and border are included in the element's total width and height.
+body:
+
+Targets the <body> element.
+Styles:
+font-family: Verdana, Geneva, Tahoma, sans-serif;: Sets the font family for the entire page.
+background-color: #f4b400;: Sets the background color of the <body> element.
+color: #ffffff;: Sets the text color for the entire page.
+.container:
+
+Targets elements with the class "container."
+Styles:
+width: 100%;: Sets the width to 100% of the containing element.
+min-height: 100vh;: Sets the minimum height to 100% of the viewport height.
+position: relative;: Positions the element relative to its normal position.
+display: flex;: Enables Flexbox layout.
+align-items: center;: Centers items along the cross-axis (vertically).
+justify-content: center;: Centers items along the main axis (horizontally).
+flex-direction: column;: Arranges flex container's children in a column.
+.logo:
+
+Targets elements with the class "logo."
+Styles:
+height: 40px;: Sets the height of the element to 40 pixels.
+width: 20%;: Sets the width to 20% of the containing element.
+margin-bottom: 15px;: Adds a bottom margin of 15 pixels.
+background-color: white;: Sets the background color to white.
+.title:
+
+Targets elements with the class "title."
+Styles:
+text-align: center;: Centers the text horizontally.
+padding: 10px 0;: Adds padding of 10 pixels on the top and bottom.
+font-size: 2.5rem;: Sets the font size to 2.5 rem.
+margin-bottom: 20px;: Adds a bottom margin of 20 pixels.
+
+.palindrome-div:
+
+Targets elements with the class "palindrome-div."
+Styles:
+width: min(100vw, 450px);: Sets a responsive width based on the viewport width.
+min-height: 100px;: Sets the minimum height to 100 pixels.
+border-radius: 20px;: Rounds the corners with a border radius of 20 pixels.
+display: flex;: Enables Flexbox layout.
+align-items: center;: Centers items along the cross-axis (vertically).
+justify-content: center;: Centers items along the main axis (horizontally).
+flex-wrap: wrap;: Allows items to wrap to the next line if needed.
+padding: 20px;: Adds padding of 20 pixels.
+margin: 10px 0;: Adds margin of 10 pixels on top and bottom.
+background-color: white;: Sets the background color to white.
+box-shadow: 0 6px 6px #4285f4;: Adds a box shadow with a color.
+label:
+
+Targets <label> elements.
+Styles:
+color: #0a0a23;: Sets the text color to a dark color.
+margin-bottom: 20px;: Adds a bottom margin of 20 pixels.
+.palindrome-btn:
+
+Targets elements with the class "palindrome-btn."
+Styles:
+width: 90px;: Sets the width to 90 pixels.
+border: none;: Removes the border.
+padding: 10px;: Adds padding of 10 pixels.
+border-radius: 15px;: Rounds the corners with a border radius of 15 pixels.
+background-color: #4285f4;: Sets the background color to a blue color.
+color: #fff;: Sets the text color to white.
+cursor: pointer;: Changes the cursor to a pointer.
+
+.palindrome-input:
+
+Targets elements with the class "palindrome-input."
+Styles:
+height: 30px;: Sets the height to 30 pixels.
+width: 250px;: Sets the width to 250 pixels.
+text-align: center;: Centers the text horizontally.
+font-size: 1.2rem;: Sets the font size to 1.2 rem.
+margin: 10px;: Adds margin of 10 pixels.
+border: none;: Removes the border.
+border-bottom: 2px solid #4285f4;: Adds a bottom border with a blue color.
+.palindrome-input:focus:
+
+Applies styles to .palindrome-input when it is in focus (clicked on or selected by the user).
+Styles:
+border-bottom: 3px solid #5a01a7;: Increases the bottom border to 3 pixels with a different color when focused.
+.palindrome-input::placeholder:
+
+Selects and styles the placeholder text within .palindrome-input.
+Styles:
+text-align: center;: Centers the placeholder text.
+.user-input:
+
+Targets elements with the class "user-input."
+Styles:
+font-size: 1.4rem;: Sets the font size to 1.4 rem.
+margin-top: 10px;: Adds top margin of 10 pixels.
+text-align: center;: Centers the text horizontally.
+.results-div:
+
+Targets elements with the class "results-div."
+Styles:
+overflow-y: auto;: Adds a vertical scrollbar when the content overflows.
+word-wrap: break-word;: Allows long words to be broken and wrap onto the next line.
+min-height: 50px;: Sets the minimum height to 50 pixels.
+color: black;: Sets the text color to black.
+.hidden:
+
+Targets elements with the class "hidden."
+Styles:
+display: none;: Hides the element by default.
+.palindrome-definition-div:
+
+Targets elements with the class "palindrome-definition-div."
+Styles:
+width: min(100vw, 450px);: Sets a responsive width based on the viewport width or a maximum of 450 pixels.
+font-size: 1.3rem;: Sets the font size to 1.3 rem.
+min-height: 140px;: Sets the minimum height to 140 pixels.
+background-color: #179c52;: Sets the background color to a green color.
+margin-top: 20px;: Adds top margin of 20 pixels.
+padding: 20px;: Adds padding of 20 pixels.
+border-radius: 20px;: Rounds the corners with a border radius of 20 pixels.
+display: flex;: Enables Flexbox layout.
+align-items: center;: Centers items along the cross-axis (vertically).
+justify-content: center;: Centers items along the main axis (horizontally).
+.palindrome-definition:
+
+Targets elements with the class "palindrome-definition."
+Styles:
+vertical-align: middle;: Vertically aligns the content in the middle.
+text-align: center;: Centers the text horizontally.
+*/

@@ -174,3 +174,135 @@ Use forEach() on taskData, then destructure id, title, date, description as the 
 ```javascript
 taskData.forEach(({ id, title, date, description }) => {});
 ```
+
+**Step 17**
+Using arrow syntax, create an implicit return and use addition assignment to set the innerHTML of tasksContainer to empty backticks.
+
+```javascript
+taskData.forEach(
+  ({ id, title, date, description }) => (tasksContainer.innerHTML += ``)
+);
+```
+
+**Step 18**<br>
+Create a div element with the class of task. Utilize template strings to set the id attribute of the div to the id you destructured from the task data.
+
+```javascript
+taskData.forEach(
+  ({ id, title, date, description }) =>
+    (tasksContainer.innerHTML += `
+        <div class="task" id="${id}"></div>
+    `)
+);
+```
+
+**Step 19**  
+Create a p element and use template strings to set its content to the title you destructured. Right before the content of the p element, create a strong element with the text Title:.
+
+```javascript
+taskData.forEach(
+  ({ id, title, date, description }) =>
+    (tasksContainer.innerHTML += `
+        <div class="task" id="${id}">
+            <p><strong>Title: </strong>${title}</p>
+        </div>
+    `)
+);
+```
+
+**Step 20**  
+Similarly to the previous step, create another p element, and interpolate the date you destructured as the text content. Inside this paragraph, create a strong element with the text Date:.
+
+```javascript
+taskData.forEach(
+  ({ id, title, date, description }) =>
+    (tasksContainer.innerHTML += `
+        <div class="task" id="${id}">
+            <p><strong>Title: </strong>${title}</p>
+            <p><strong>Date:</strong> ${date}</p>
+        </div>
+    `)
+);
+```
+
+**Step 21**  
+Create one more p element and interpolate the description you destructured as the text. Also, create a strong element inside the paragraph with the text Description:.
+
+```javascript
+taskData.forEach(
+  ({ id, title, date, description }) =>
+    (tasksContainer.innerHTML += `
+        <div class="task" id="${id}">
+            <p><strong>Title: </strong>${title}</p>
+            <p><strong>Date:</strong> ${date}</p>
+            <p><strong>Description:</strong> ${description}</p>
+        </div>
+    `)
+);
+```
+
+**Step 22**  
+To allow for task management, you need to include both a delete and an edit button for each task.
+Create two button elements with the type attribute set to button and the class attribute set to btn. Set the text of the first button to Edit and the text of the second button to Delete.
+
+```javascript
+taskForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
+  const taskObj = {
+    id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
+    title: titleInput.value,
+    date: dateInput.value,
+    description: descriptionInput.value,
+  };
+
+  if (dataArrIndex === -1) {
+    taskData.unshift(taskObj);
+  }
+
+  taskData.forEach(
+    ({ id, title, date, description }) =>
+      (tasksContainer.innerHTML += `
+      <div class="task" id="${id}">
+        <p><strong>Title:</strong> ${title}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Description:</strong> ${description}</p>
+        <button type="button" class="btn">Edit</button>
+        <button type="button" class="btn">Delete</button>
+      </div>
+    `)
+  );
+});
+```
+
+**Step 23**  
+After adding the task to the page, you should close the form modal to view the task. To do this, utilize classList to toggle the hidden class on the taskForm element.
+
+```javascript
+taskForm.classList.toggle("hidden");
+```
+
+**Step 24**  
+If you attempt to add another task now, you'll notice that the input fields retain the values you entered for the previous task. To resolve this, you need to clear the input fields after adding a task.
+Instead of clearing the input fields one by one, it's a good practice to create a function that handles clearing those fields. You can then call this function whenever you need to clear the input fields again.
+Use arrow syntax to create a reset function and set it to a pair of curly braces.
+
+```javascript
+const reset = () => {};
+let currentTask = {};
+```
+
+**Step 25**  
+Inside the reset function, set each value of titleInput, dateInput, descriptionInput to an empty string.
+Also, use classList to toggle the class hidden on the taskForm and set currentTask to an empty object. That's because at this point, currentTask will be filled with the task the user might have added.
+
+```javascript
+const reset = () => {
+  titleInput.value = "";
+  dateInput.value = "";
+  descriptionInput.value = "";
+  taskForm.classList.toggle("hidden");
+  currentTask = {};
+};
+```
